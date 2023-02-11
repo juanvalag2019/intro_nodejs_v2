@@ -22,6 +22,10 @@ app.post('/todos', (req, res) => {
   res.status(201).json(todo);
 });
 
+app.get('/todos/:id', (req, res) => {
+  const todo = db.find((todo) => todo.id === +req.params.id);
+  res.status(203).json({ data: todo });
+});
 
 app.get('/todos', (req, res) => {
   res.json(db);
